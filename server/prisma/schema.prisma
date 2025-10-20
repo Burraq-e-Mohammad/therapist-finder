@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Therapist {
+  id              String   @id @default(cuid())
+  name            String
+  profileUrl      String?  @map("profile_url")
+  gender          String
+  city            String
+  experienceYears Float    @map("experience_years")
+  email           String?
+  phone           String?
+  modes           String[] // consultation modes
+  education       String[] // education entries
+  experience      String[] // experience entries
+  expertise       String[] // expertise tags
+  about           String?
+  fees            Float?
+  feesRaw         String?  @map("fees_raw")
+  feesCurrency    String?  @map("fees_currency")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("therapists")
+}
