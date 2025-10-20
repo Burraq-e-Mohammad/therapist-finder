@@ -1,5 +1,5 @@
 // API service for communicating with the backend
-const API_BASE_URL = 'http://localhost:3001/api/v1';
+const API_BASE_URL = 'https://therapist-finder.onrender.com/api/v1';
 
 export interface Therapist {
   id: string;
