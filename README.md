@@ -10,6 +10,8 @@ A comprehensive web application for finding and connecting with mental health pr
 - **Real-time Filtering**: Dynamic filter options with live counts
 - **Pagination**: Efficient browsing through large therapist databases
 - **Detailed Profiles**: Comprehensive therapist information and contact details
+- **Live Deployment**: Fully functional application deployed on Netlify and Render
+- **CORS Configured**: Frontend and backend properly connected for API communication
 
 ## 🛠️ Tech Stack
 
@@ -163,16 +165,26 @@ npm run db:studio    # Open Prisma Studio
 
 ## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to your hosting platform
-3. Set environment variables for API URL
+### Live Application
+- **Frontend**: [https://therapist-finder-app.netlify.app](https://therapist-finder-app.netlify.app)
+- **Backend API**: [https://therapist-finder.onrender.com](https://therapist-finder.onrender.com)
 
-### Backend (Railway/Render/Heroku)
-1. Set up PostgreSQL database
-2. Configure environment variables
+### Frontend (Netlify)
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to Netlify
+3. Configure build settings in `netlify.toml`
+4. Set environment variables for API URL
+
+### Backend (Render)
+1. Set up PostgreSQL database on Render
+2. Configure environment variables in `render.yaml`
 3. Deploy the server directory
 4. Run database migrations and seeding
+
+### Deployment Configuration
+- **Frontend**: Configured with `netlify.toml` for SPA routing and favicon serving
+- **Backend**: Configured with `render.yaml` for CORS and environment variables
+- **CORS**: Backend allows requests from Netlify frontend URL
 
 ## 🤝 Contributing
 
