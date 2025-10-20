@@ -26,7 +26,7 @@ const prisma = new PrismaClient();
 app.use(helmet());
 
 // CORS configuration
-const defaultAllowedOrigins = ['http://localhost:5173', 'http://localhost:8080'];
+const defaultAllowedOrigins = ['https://therapist-finder-one.vercel.app' , 'http://localhost:5173', 'http://localhost:8080'];
 const envAllowedOrigins = (process.env.CORS_ORIGIN || '')
   .split(',')
   .map(o => o.trim())
