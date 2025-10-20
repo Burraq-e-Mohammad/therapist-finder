@@ -15,7 +15,7 @@ services:
           name: therapist-finder-db
           property: connectionString
       - key: CORS_ORIGIN
-        value: https://therapist-finder-one.netlify.app
+        value: https://therapist-finder-app.netlify.app
       - key: API_PREFIX
         value: /api/v1
 
