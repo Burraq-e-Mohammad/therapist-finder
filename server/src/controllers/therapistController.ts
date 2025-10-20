@@ -105,7 +105,7 @@ export const getTherapistById = async (req: Request, res: Response, next: NextFu
       data: therapist,
     });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
 
