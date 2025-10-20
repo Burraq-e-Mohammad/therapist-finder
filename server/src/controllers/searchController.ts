@@ -24,11 +24,11 @@ export const searchTherapists = async (req: Request, res: Response, next: NextFu
     
     // Build filter query
     const filterWhere = buildWhereClause({
-      cities: cities ? (Array.isArray(cities) ? cities as string[] : [cities as string]) : undefined,
-      experienceRange: experienceRange as string,
-      genders: genders ? (Array.isArray(genders) ? genders as string[] : [genders as string]) : undefined,
-      feeRange: feeRange as string,
-      consultationModes: consultationModes ? (Array.isArray(consultationModes) ? consultationModes as string[] : [consultationModes as string]) : undefined,
+      cities: cities ? (Array.isArray(cities) ? cities as string[] : [cities as string]) : [],
+      experienceRange: experienceRange as string || '',
+      genders: genders ? (Array.isArray(genders) ? genders as string[] : [genders as string]) : [],
+      feeRange: feeRange as string || '',
+      consultationModes: consultationModes ? (Array.isArray(consultationModes) ? consultationModes as string[] : [consultationModes as string]) : [],
     });
 
     // Combine search and filter conditions

@@ -124,7 +124,7 @@ export function parseFeeAmount(feeString: string): number | null {
   }
   
   // Extract numeric value from fee string
-  const match = feeString.match(/(\d+(?:,\d{3})*(?:\.\d{2})?)/);
+  const match = feeString?.match(/(\d+(?:,\d{3})*(?:\.\d{2})?)/);
   if (match) {
     return parseFloat(match[1].replace(/,/g, ''));
   }

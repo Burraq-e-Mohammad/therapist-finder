@@ -1,11 +1,11 @@
 import { Prisma } from '@prisma/client';
 
 export interface FilterOptions {
-  cities?: string[];
-  experienceRange?: string;
-  genders?: string[];
-  feeRange?: string;
-  consultationModes?: string[];
+  cities?: string[] | undefined;
+  experienceRange?: string | undefined;
+  genders?: string[] | undefined;
+  feeRange?: string | undefined;
+  consultationModes?: string[] | undefined;
 }
 
 export interface SearchOptions {
@@ -172,8 +172,8 @@ export function buildOrderByClause(
     case 'fees':
       // Handle null fees properly - put nulls at the end for both asc and desc
       return order === 'desc' 
-        ? [{ fees: { sort: 'desc', nulls: 'last' } }]
-        : [{ fees: { sort: 'asc', nulls: 'last' } }];
+        ? { fees: { sort: 'desc', nulls: 'last' } }
+        : { fees: { sort: 'asc', nulls: 'last' } };
     case 'name':
     default:
       return { name: order };

@@ -24,11 +24,11 @@ export const getTherapists = async (req: Request, res: Response, next: NextFunct
 
     // Parse filters
     const filters: FilterOptions = {
-      cities: cities ? (Array.isArray(cities) ? cities as string[] : [cities as string]) : undefined,
-      experienceRange: experienceRange as string,
-      genders: genders ? (Array.isArray(genders) ? genders as string[] : [genders as string]) : undefined,
-      feeRange: feeRange as string,
-      consultationModes: consultationModes ? (Array.isArray(consultationModes) ? consultationModes as string[] : [consultationModes as string]) : undefined,
+      cities: cities ? (Array.isArray(cities) ? cities as string[] : [cities as string]) : [],
+      experienceRange: experienceRange as string || '',
+      genders: genders ? (Array.isArray(genders) ? genders as string[] : [genders as string]) : [],
+      feeRange: feeRange as string || '',
+      consultationModes: consultationModes ? (Array.isArray(consultationModes) ? consultationModes as string[] : [consultationModes as string]) : [],
     };
 
     // Build query parameters
@@ -78,6 +78,15 @@ export const getTherapistById = async (req: Request, res: Response, next: NextFu
   try {
     const { id } = req.params;
 
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: 'Therapist ID is required',
+        },
+      });
+    }
+
     const therapist = await prisma.therapist.findUnique({
       where: { id },
     });
@@ -91,7 +100,7 @@ export const getTherapistById = async (req: Request, res: Response, next: NextFu
       });
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: therapist,
     });
